@@ -6,9 +6,9 @@
 
 body {
   min-height: 100vh;
-  background: #050505 url("img/baggrund.jpg") center / cover fixed; /* denim-/støjtekstur */
+  background: #050505 url("background.png") center / cover no-repeat fixed;
   color: #fff;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "kohinoor-devanagari", "Helvetica Neue", Arial, sans-serif;
   font-weight: 300;
   font-size: 15px;
   display: flex;
@@ -105,13 +105,23 @@ main {
   .topbar {
     padding: 30px 24px 0;
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
     justify-items: center;
+    text-align: center;
+  }
+
+  .logo {
+    order: 1;
+  }
+  .tagline {
+    order: 2;
   }
   .social {
+    order: 3;
     justify-content: center;
     gap: 30px;
   }
+
   .steps {
     flex-direction: column;
     align-items: center;
