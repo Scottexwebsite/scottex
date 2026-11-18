@@ -3,18 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SLONX – craftmanship denim pants</title>
+    <title>SLONX – custom garments</title>
     <link rel="stylesheet" href="https://use.typekit.net/gsi8cqu.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header class="topbar">
-      <a href="#" class="logo">
-        <!-- Udskift med dit eget logo: <img src="img/logo.svg" alt="SLONX"> -->
-        <img src="img/scottexlogo.svg" alt="SLONX" />
-      </a>
+      <button
+        class="burger"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-      <nav class="social">
+      <div class="brand">
+        <a href="#" class="logo">
+          <img src="img/scottexlogo.svg" alt="SLONX" />
+        </a>
+        <p class="subtitle">Custom garments</p>
+      </div>
+
+      <nav class="social" id="menu">
         <a href="https://www.instagram.com/" target="_blank" rel="noopener"
           >Instagram</a
         >
@@ -25,27 +38,76 @@
     </header>
 
     <main>
+      <!-- Desktop: tre felter ved siden af hinanden. Mobil: swipe-karrusel -->
       <section class="steps">
         <figure class="step">
           <img src="img/measurement.png" alt="Kropsmålinger" />
-          <figcaption>Get measured</figcaption>
+          <figcaption>get measured</figcaption>
         </figure>
 
         <figure class="step">
-          <img class="step-gif" src="3Dvideo.gif" alt="Jeans go into 3D" />
-          <figcaption>Jeans go into 3D</figcaption>
+          <img class="step-gif" src="3Dvideo.gif" alt="3D work" />
+          <figcaption>3D work</figcaption>
         </figure>
 
         <figure class="step">
           <img src="img/trousers.png" alt="Færdige denim pants" />
-          <figcaption>Receive your new denim pants</figcaption>
+          <figcaption>receive your new denim pants</figcaption>
         </figure>
       </section>
 
-      <a href="#" class="button">Get more information</a>
+      <section class="info">
+        <p class="intro">
+          Your new favourite measure garments<br />located in Nørrebro.
+        </p>
+
+        <p class="question">Do you feel connected to the brand already?</p>
+
+        <div class="choices">
+          <a href="#" class="pill">yes</a>
+          <a href="#" class="pill">no</a>
+        </div>
+      </section>
+
+      <footer class="signature">
+        <p>by Benjamin Scott</p>
+        <img src="img/signature.svg" alt="Benjamin Scott" />
+      </footer>
     </main>
-    <a href="https://scottex.dk/pages/contact" class="book-btn"
+
+    <a
+      href="https://scottex.dk/pages/contact"
+      class="book-btn"
+      target="_blank"
+      rel="noopener"
       >Book an appointment</a
     >
+
+    <script>
+      /* Burger-menu */
+      const burger = document.querySelector(".burger");
+      const menu = document.querySelector("#menu");
+
+      burger.addEventListener("click", () => {
+        const open = burger.classList.toggle("open");
+        menu.classList.toggle("open", open);
+        burger.setAttribute("aria-expanded", open);
+      });
+
+      /* Karrusel (kun mobil): start på det midterste billede */
+      const steps = document.querySelector(".steps");
+      const mobile = window.matchMedia("(max-width: 900px)");
+
+      function centerMiddle() {
+        if (!mobile.matches) return;
+        const middle = steps.children[1];
+        steps.scrollLeft =
+          middle.offsetLeft - (steps.clientWidth - middle.offsetWidth) / 2;
+      }
+
+      centerMiddle();
+      window.addEventListener("load", centerMiddle);
+      mobile.addEventListener("change", centerMiddle);
+    </script>
   </body>
 </html>

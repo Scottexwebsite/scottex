@@ -20,6 +20,10 @@ a {
   text-decoration: none;
 }
 
+/* =====================================================
+   DESKTOP
+   ===================================================== */
+
 /* ---------- Top ---------- */
 .topbar {
   position: relative;
@@ -29,13 +33,22 @@ a {
   padding: 40px 66px 0;
 }
 
-.logo {
+.brand {
   grid-column: 2;
+  text-align: center;
 }
 
 .logo img {
-  height: 90px;
   display: block;
+  height: 90px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  margin-top: 14px;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .social {
@@ -53,17 +66,16 @@ a {
   display: none;
 }
 
-/* ---------- De tre felter ---------- */
+/* ---------- Indhold ---------- */
 main {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 110px 20px 60px;
-  gap: 100px;
+  padding: 90px 20px 0;
 }
 
+/* ---------- De tre felter ---------- */
 .steps {
   display: flex;
   justify-content: center;
@@ -73,59 +85,85 @@ main {
 }
 
 .step {
+  flex: 0 0 auto;
   text-align: center;
 }
 
-.step img,
-.step video {
+.step img {
   display: block;
+  width: 240px;
+  height: 243px;
   object-fit: cover;
   background: #9a9a9a;
 }
 
-.step img {
-  width: 223px;
-  height: 226px;
-}
-
-.step video {
-  width: 241px;
-  height: 243px;
-  margin-top: -2px;
-}
-
+/* Midterste GIF: lidt større end de to andre */
 .step .step-gif {
-  width: 241px;
-  height: 243px;
-  margin-top: -2px;
-  padding: 8px;
+  width: 264px;
+  height: 267px;
+  margin-top: -12px;
+  padding: 18px;
   object-fit: contain;
-  background: #9a9a9a;
 }
 
 .step figcaption {
   margin-top: 12px;
 }
 
-/* ---------- Knapper ---------- */
-.button {
+/* ---------- Tekst og knapper ---------- */
+.info {
+  margin-top: 90px;
+  text-align: center;
+}
+
+.intro {
+  line-height: 1.5;
+}
+
+.question {
+  margin-top: 60px;
+}
+
+.choices {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 38px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 40px;
   background: #fff;
   color: #000;
-  padding: 8px 46px;
   border-radius: 999px;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  font-size: 16px;
   transition: transform 0.2s;
 }
 
-.button:hover {
-  transform: scale(1.04);
+.pill:hover {
+  transform: scale(1.05);
 }
 
+/* ---------- Signatur ---------- */
+.signature {
+  margin-top: 100px;
+  padding-bottom: 70px;
+  text-align: center;
+}
+
+.signature img {
+  display: block;
+  width: 140px;
+  margin: 16px auto 0;
+}
+
+/* ---------- Book an appointment ---------- */
 .book-btn {
   position: fixed;
-  top: auto;
-  left: auto;
   right: 32px;
   bottom: 32px;
   z-index: 50;
@@ -134,7 +172,6 @@ main {
   color: #000;
   padding: 12px 40px;
   border-radius: 999px;
-  text-decoration: none;
   white-space: nowrap;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   transition: transform 0.2s;
@@ -142,32 +179,38 @@ main {
 
 .book-btn:hover {
   transform: scale(1.05);
-  color: #000;
 }
 
-/* ---------- Mobil ---------- */
+/* =====================================================
+   MOBIL (karrusel + burger-menu)
+   ===================================================== */
 @media (max-width: 900px) {
   .topbar {
     padding: 30px 24px 0;
     grid-template-columns: 1fr;
-    gap: 16px;
-    justify-items: center;
-    text-align: center;
   }
 
-  .logo {
-    order: 1;
+  .brand {
     grid-column: 1;
+    padding-top: 40px;
   }
 
-  /* Burger-knap i øverste højre hjørne */
+  .logo img {
+    height: 105px;
+  }
+
+  .subtitle {
+    margin-top: 12px;
+  }
+
+  /* Burger-knap øverst til højre */
   .burger {
     display: block;
     position: absolute;
-    top: 30px;
+    top: 32px;
     right: 24px;
-    width: 32px;
-    height: 22px;
+    width: 28px;
+    height: 18px;
     background: none;
     border: 0;
     cursor: pointer;
@@ -182,50 +225,96 @@ main {
     background: #fff;
     transition:
       transform 0.25s,
-      top 0.25s;
+      top 0.25s,
+      opacity 0.2s;
   }
 
   .burger span:nth-child(1) {
-    top: 6px;
+    top: 0;
   }
-
   .burger span:nth-child(2) {
-    top: 15px;
+    top: 8px;
+  }
+  .burger span:nth-child(3) {
+    top: 16px;
   }
 
   .burger.open span:nth-child(1) {
-    top: 10px;
+    top: 8px;
     transform: rotate(45deg);
   }
-
   .burger.open span:nth-child(2) {
-    top: 10px;
+    opacity: 0;
+  }
+  .burger.open span:nth-child(3) {
+    top: 8px;
     transform: rotate(-45deg);
   }
 
-  /* Instagram og LinkedIn skjules, til man trykker på burgeren */
+  /* Instagram og LinkedIn ligger skjult, til man trykker på burgeren */
   .social {
-    grid-column: 1;
+    grid-column: auto;
     display: none;
-    order: 3;
+    position: absolute;
+    top: 70px;
+    right: 24px;
+    z-index: 55;
     flex-direction: column;
-    align-items: center;
-    gap: 18px;
+    align-items: flex-end;
+    gap: 16px;
+    padding: 16px 20px;
+    background: #000;
   }
 
   .social.open {
     display: flex;
   }
 
-  .steps {
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+  main {
+    padding: 60px 0 0;
   }
 
-  main {
-    padding-top: 60px;
-    gap: 60px;
+  /* ---------- Karrusel ---------- */
+  .steps {
+    position: relative;
+    justify-content: flex-start;
+    gap: 50px;
+    padding: 0 calc((100vw - 71vw) / 2);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .steps::-webkit-scrollbar {
+    display: none;
+  }
+
+  .step {
+    flex: 0 0 71vw;
+    scroll-snap-align: center;
+  }
+
+  /* Alle tre billeder (inkl. GIF'en) fylder en firkant */
+  .steps .step img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin-top: 0;
+  }
+
+  .info {
+    margin-top: 80px;
+    padding: 0 24px;
+  }
+
+  .question {
+    margin-top: 80px;
+  }
+
+  .signature {
+    margin-top: 110px;
+    padding-bottom: 90px;
   }
 
   .book-btn {
