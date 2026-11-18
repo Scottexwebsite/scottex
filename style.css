@@ -94,6 +94,15 @@ main {
   margin-top: -2px;
 }
 
+.step .step-gif {
+  width: 241px;
+  height: 243px;
+  margin-top: -2px;
+  padding: 8px;
+  object-fit: contain;
+  background: #9a9a9a;
+}
+
 .step figcaption {
   margin-top: 12px;
 }
