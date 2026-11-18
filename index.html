@@ -56,16 +56,63 @@
         </figure>
       </section>
 
-      <section class="info">
+      <!-- Prikker under karrusellen (kun mobil) -->
+      <div class="dots">
+        <button class="dot" aria-label="Billede 1"></button>
+        <button class="dot" aria-label="Billede 2"></button>
+        <button class="dot" aria-label="Billede 3"></button>
+      </div>
+
+      <section class="info" id="info">
         <p class="intro">
           Your new favourite measure garments<br />located in Nørrebro.
         </p>
 
-        <p class="question">Do you feel connected to the brand already?</p>
+        <!-- Vises, før man har svaret -->
+        <div class="ask">
+          <p class="question">Do you feel connected to the brand already?</p>
 
-        <div class="choices">
-          <a href="#" class="pill">yes</a>
-          <a href="#" class="pill">no</a>
+          <div class="choices">
+            <button type="button" class="pill answer">yes</button>
+            <button type="button" class="pill answer">no</button>
+          </div>
+        </div>
+
+        <!-- Vises, efter man har svaret -->
+        <div class="thanks">
+          <p>
+            Thank you for your feedback!<br />
+            If you want to know more<br />
+            check out our Instagram
+          </p>
+
+          <a
+            href="https://www.instagram.com/"
+            class="insta"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="44"
+              height="44"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4.2" />
+              <circle
+                cx="17.2"
+                cy="6.8"
+                r="0.7"
+                fill="currentColor"
+                stroke="none"
+              />
+            </svg>
+          </a>
         </div>
       </section>
 
@@ -94,20 +141,62 @@
         burger.setAttribute("aria-expanded", open);
       });
 
-      /* Karrusel (kun mobil): start på det midterste billede */
+      /* Yes / no: skift spørgsmålet ud med tak-beskeden */
+      const info = document.querySelector("#info");
+
+      document.querySelectorAll(".answer").forEach((button) => {
+        button.addEventListener("click", () => {
+          info.classList.add("answered");
+        });
+      });
+
+      /* Karrusel (kun mobil) */
       const steps = document.querySelector(".steps");
+      const slides = [...steps.children];
+      const dots = document.querySelectorAll(".dot");
       const mobile = window.matchMedia("(max-width: 900px)");
 
-      function centerMiddle() {
-        if (!mobile.matches) return;
-        const middle = steps.children[1];
-        steps.scrollLeft =
-          middle.offsetLeft - (steps.clientWidth - middle.offsetWidth) / 2;
+      function scrollToSlide(i, behavior = "auto") {
+        const slide = slides[i];
+        steps.scrollTo({
+          left: slide.offsetLeft - (steps.clientWidth - slide.offsetWidth) / 2,
+          behavior,
+        });
       }
 
-      centerMiddle();
-      window.addEventListener("load", centerMiddle);
-      mobile.addEventListener("change", centerMiddle);
+      /* Marker den prik, der svarer til det billede, der står i midten */
+      function updateDots() {
+        const center = steps.scrollLeft + steps.clientWidth / 2;
+        let closest = 0;
+        let min = Infinity;
+
+        slides.forEach((slide, i) => {
+          const distance = Math.abs(
+            slide.offsetLeft + slide.offsetWidth / 2 - center,
+          );
+          if (distance < min) {
+            min = distance;
+            closest = i;
+          }
+        });
+
+        dots.forEach((dot, i) => dot.classList.toggle("active", i === closest));
+      }
+
+      function setupMobile() {
+        if (!mobile.matches) return;
+        scrollToSlide(1); /* start på det midterste billede */
+        updateDots();
+      }
+
+      steps.addEventListener("scroll", updateDots, { passive: true });
+      dots.forEach((dot, i) =>
+        dot.addEventListener("click", () => scrollToSlide(i, "smooth")),
+      );
+
+      setupMobile();
+      window.addEventListener("load", setupMobile);
+      mobile.addEventListener("change", setupMobile);
     </script>
   </body>
 </html>

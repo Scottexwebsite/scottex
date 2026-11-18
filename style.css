@@ -110,6 +110,11 @@ main {
   margin-top: 12px;
 }
 
+/* Prikker under karrusellen (kun mobil) */
+.dots {
+  display: none;
+}
+
 /* ---------- Tekst og knapper ---------- */
 .info {
   margin-top: 90px;
@@ -137,15 +142,47 @@ main {
   justify-content: center;
   width: 120px;
   height: 40px;
+  border: 0;
   background: #fff;
   color: #000;
   border-radius: 999px;
+  font-family: inherit;
+  font-weight: inherit;
   font-size: 16px;
+  cursor: pointer;
   transition: transform 0.2s;
 }
 
 .pill:hover {
   transform: scale(1.05);
+}
+
+/* ---------- Tak-besked efter svar ---------- */
+.thanks {
+  display: none;
+  margin-top: 60px;
+}
+
+.thanks p {
+  line-height: 1.5;
+}
+
+.insta {
+  display: inline-block;
+  margin-top: 28px;
+  transition: transform 0.2s;
+}
+
+.insta:hover {
+  transform: scale(1.08);
+}
+
+.info.answered .ask {
+  display: none;
+}
+
+.info.answered .thanks {
+  display: block;
 }
 
 /* ---------- Signatur ---------- */
@@ -182,7 +219,7 @@ main {
 }
 
 /* =====================================================
-   MOBIL (karrusel + burger-menu)
+   MOBIL (karrusel + prikker + burger-menu)
    ===================================================== */
 @media (max-width: 900px) {
   .topbar {
@@ -303,12 +340,39 @@ main {
     margin-top: 0;
   }
 
+  /* ---------- Prikker ---------- */
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .dot.active {
+    background: #fff;
+  }
+
   .info {
-    margin-top: 80px;
+    margin-top: 60px;
     padding: 0 24px;
   }
 
   .question {
+    margin-top: 80px;
+  }
+
+  .thanks {
     margin-top: 80px;
   }
 
