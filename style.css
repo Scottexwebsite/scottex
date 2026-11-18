@@ -66,7 +66,7 @@ a {
   display: none;
 }
 
-/* ---------- Indhold ---------- */
+/* ---------- Indhold (forside) ---------- */
 main {
   flex: 1;
   display: flex;
@@ -89,6 +89,14 @@ main {
   text-align: center;
 }
 
+.step-link {
+  display: block;
+}
+
+.step-link:hover figcaption {
+  opacity: 0.6;
+}
+
 .step img {
   display: block;
   width: 240px;
@@ -108,6 +116,7 @@ main {
 
 .step figcaption {
   margin-top: 12px;
+  transition: opacity 0.2s;
 }
 
 /* Prikker under karrusellen (kun mobil) */
@@ -216,6 +225,55 @@ main {
 
 .book-btn:hover {
   transform: scale(1.05);
+}
+
+/* ---------- Undersider (3D, measurements, pants) ---------- */
+.page {
+  padding: 70px 24px 0;
+  text-align: center;
+}
+
+.page-media {
+  display: block;
+  width: 140px;
+  max-width: 100%;
+  height: auto;
+}
+
+.page-title {
+  margin-top: 40px;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.page-text {
+  margin-top: 24px;
+  max-width: 420px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Measurements: teksten står midt på siden */
+.page-center .page-title {
+  margin-top: 120px;
+}
+
+.page-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.pant img {
+  display: block;
+  height: 340px;
+  width: auto;
+}
+
+.pant figcaption {
+  margin-top: 14px;
 }
 
 /* =====================================================
@@ -385,5 +443,27 @@ main {
     right: 16px;
     bottom: 16px;
     padding: 10px 22px;
+  }
+
+  /* Undersider på mobil */
+  .page {
+    padding: 50px 24px 0;
+  }
+
+  .page-media {
+    width: min(36vw, 140px);
+  }
+
+  .page-title {
+    margin-top: 36px;
+    font-size: 28px;
+  }
+
+  .page-center .page-title {
+    margin-top: 110px;
+  }
+
+  .pant img {
+    height: 240px;
   }
 }
