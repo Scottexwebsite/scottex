@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SLONX – Pant #27 Mathias</title>
+
     <link rel="stylesheet" href="https://use.typekit.net/gsi8cqu.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <header class="topbar">
       <button
@@ -14,6 +16,7 @@
         aria-label="Menu"
         aria-expanded="false"
         aria-controls="menu"
+        type="button"
       >
         <span></span>
         <span></span>
@@ -24,19 +27,18 @@
         <a href="index.html" class="logo">
           <img src="img/scottexlogo.svg" alt="SLONX" />
         </a>
+
         <p class="subtitle">Custom garments</p>
       </div>
 
       <nav class="social" id="menu">
-        <a
-          href="https://scottex.dk/pages/contact"
-          target="_blank"
-          rel="noopener"
-          >Contact</a
-        >
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener"
-          >Instagram</a
-        >
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener">
+          Instagram
+        </a>
+
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">
+          Contact
+        </a>
       </nav>
     </header>
 
@@ -64,9 +66,21 @@
       class="book-btn"
       target="_blank"
       rel="noopener"
-      >Book an appointment</a
     >
+      Book an appointment
+    </a>
 
-    <script src="menu.js"></script>
+    <script>
+      /* Burger-menu */
+      const burger = document.querySelector(".burger");
+      const menu = document.querySelector("#menu");
+
+      burger.addEventListener("click", () => {
+        const isOpen = menu.classList.toggle("open");
+
+        burger.classList.toggle("open", isOpen);
+        burger.setAttribute("aria-expanded", String(isOpen));
+      });
+    </script>
   </body>
 </html>
