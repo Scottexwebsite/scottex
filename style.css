@@ -6,7 +6,7 @@
 
 body {
   min-height: 100vh;
-  background: #050505 url("background.png") center / cover no-repeat fixed;
+  background: #000;
   color: #fff;
   font-family: "kohinoor-devanagari", "Helvetica Neue", Arial, sans-serif;
   font-weight: 300;
@@ -22,23 +22,35 @@ a {
 
 /* ---------- Top ---------- */
 .topbar {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: start;
-  padding: 56px 66px 0;
+  padding: 40px 66px 0;
 }
+
+.logo {
+  grid-column: 2;
+}
+
 .logo img {
-  height: 64px;
+  height: 90px;
   display: block;
 }
+
 .social {
+  grid-column: 3;
   display: flex;
   justify-content: flex-end;
   gap: 50px;
 }
-.tagline:hover,
+
 .social a:hover {
   opacity: 0.6;
+}
+
+.burger {
+  display: none;
 }
 
 /* ---------- De tre felter ---------- */
@@ -71,11 +83,11 @@ main {
   background: #9a9a9a;
 }
 
-/* Venstre og højre: 223 × 226 – midten er lidt større */
 .step img {
   width: 223px;
   height: 226px;
 }
+
 .step video {
   width: 241px;
   height: 243px;
@@ -86,7 +98,7 @@ main {
   margin-top: 12px;
 }
 
-/* ---------- Knap ---------- */
+/* ---------- Knapper ---------- */
 .button {
   background: #fff;
   color: #000;
@@ -96,8 +108,32 @@ main {
   text-underline-offset: 2px;
   transition: transform 0.2s;
 }
+
 .button:hover {
   transform: scale(1.04);
+}
+
+.book-btn {
+  position: fixed;
+  top: auto;
+  left: auto;
+  right: 32px;
+  bottom: 32px;
+  z-index: 50;
+  display: inline-block;
+  background: #fff;
+  color: #000;
+  padding: 12px 40px;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
+}
+
+.book-btn:hover {
+  transform: scale(1.05);
+  color: #000;
 }
 
 /* ---------- Mobil ---------- */
@@ -112,14 +148,64 @@ main {
 
   .logo {
     order: 1;
+    grid-column: 1;
   }
-  .tagline {
-    order: 2;
+
+  /* Burger-knap i øverste højre hjørne */
+  .burger {
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 24px;
+    width: 32px;
+    height: 22px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    z-index: 60;
   }
+
+  .burger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transition:
+      transform 0.25s,
+      top 0.25s;
+  }
+
+  .burger span:nth-child(1) {
+    top: 6px;
+  }
+
+  .burger span:nth-child(2) {
+    top: 15px;
+  }
+
+  .burger.open span:nth-child(1) {
+    top: 10px;
+    transform: rotate(45deg);
+  }
+
+  .burger.open span:nth-child(2) {
+    top: 10px;
+    transform: rotate(-45deg);
+  }
+
+  /* Instagram og LinkedIn skjules, til man trykker på burgeren */
   .social {
+    grid-column: 1;
+    display: none;
     order: 3;
-    justify-content: center;
-    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .social.open {
+    display: flex;
   }
 
   .steps {
@@ -127,8 +213,15 @@ main {
     align-items: center;
     gap: 40px;
   }
+
   main {
     padding-top: 60px;
     gap: 60px;
+  }
+
+  .book-btn {
+    right: 16px;
+    bottom: 16px;
+    padding: 10px 22px;
   }
 }
