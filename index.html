@@ -6,7 +6,23 @@
     <title>SLONX – custom garments</title>
     <link rel="stylesheet" href="https://use.typekit.net/gsi8cqu.css" />
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-T8VFV8ET15"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-T8VFV8ET15");
+    </script>
   </head>
+
   <body>
     <header class="topbar">
       <button
@@ -150,11 +166,22 @@
         burger.setAttribute("aria-expanded", open);
       });
 
-      /* Yes / no: skift spørgsmålet ud med tak-beskeden */
+      /* Yes / no: tracking og tak-besked */
       const info = document.querySelector("#info");
 
       document.querySelectorAll(".answer").forEach((button) => {
         button.addEventListener("click", () => {
+          const answer = button.textContent.trim().toLowerCase();
+
+          // Send svaret til Google Analytics
+          if (typeof gtag === "function") {
+            gtag(
+              "event",
+              answer === "yes" ? "brand_connection_yes" : "brand_connection_no",
+            );
+          }
+
+          // Vis tak-beskeden
           info.classList.add("answered");
         });
       });
@@ -194,7 +221,7 @@
 
       function setupMobile() {
         if (!mobile.matches) return;
-        scrollToSlide(1); /* start på det midterste billede */
+        scrollToSlide(1);
         updateDots();
       }
 
