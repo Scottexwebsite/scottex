@@ -299,7 +299,7 @@ main {
 .page-pants27 .pant-hero img {
   position: relative;
   z-index: 1;
-  transform: scale(1.38);
+  transform: scale(1.8);
   transform-origin: center center;
 }
 
@@ -560,7 +560,7 @@ main {
   .page-pants27 .pant-hero img {
     position: relative;
     z-index: 1;
-    transform: scale(1.45);
+    transform: scale(1.75);
     transform-origin: center center;
   }
 
