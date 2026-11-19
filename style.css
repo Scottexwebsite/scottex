@@ -13,6 +13,7 @@ body {
   font-size: 15px;
   display: flex;
   flex-direction: column;
+  overflow-x: clip;
 }
 
 a {
@@ -293,8 +294,9 @@ main {
 
 .pant img {
   display: block;
-  height: 520px;
+  height: 400px;
   width: auto;
+  max-width: 100%;
 }
 
 .pant figcaption {
@@ -317,11 +319,24 @@ main {
   object-fit: contain;
 }
 
+.page-pants27 .pant-hero {
+  margin-top: -12px;
+}
+
 .page-pants27 .pant-hero img {
   position: relative;
   z-index: 1;
-  transform: scale(1.92);
+  height: 300px;
+  transform: translateY(10px) scale(1.25);
   transform-origin: center center;
+}
+
+.page-pants27 .pant-hero figcaption {
+  margin-top: 56px;
+}
+
+.page-pants27 .pant-grid {
+  margin-top: 44px;
 }
 
 .page-pant26 .pant-hero img {
@@ -601,7 +616,9 @@ main {
   }
 
   .pant img {
-    height: 350px;
+    width: min(92vw, 390px);
+    height: auto;
+    max-width: 100%;
   }
 
   .pant figcaption {
@@ -621,8 +638,17 @@ main {
   .page-pants27 .pant-hero img {
     position: relative;
     z-index: 1;
-    transform: scale(1.88);
+    height: 205px;
+    transform: translateY(-20px) scale(1.35);
     transform-origin: center center;
+  }
+
+  .page-pants27 .pant-hero figcaption {
+    margin-top: 28px;
+  }
+
+  .page-pants27 .pant-grid {
+    margin-top: 22px;
   }
 
   .page-pant26 .pant-hero img {
