@@ -234,6 +234,10 @@ main {
   text-align: center;
 }
 
+.page-3d.page {
+  padding-top: 46px;
+}
+
 .page-pant26.page {
   padding-top: 105px;
 }
@@ -243,6 +247,10 @@ main {
   width: 140px;
   max-width: 100%;
   height: auto;
+}
+
+.page-3d .page-media {
+  width: 190px;
 }
 
 .page-measurements .page-media {
@@ -546,6 +554,10 @@ main {
     padding: 50px 24px 0;
   }
 
+  .page-3d.page {
+    padding-top: 50px;
+  }
+
   .page-pant26.page {
     padding-top: 85px;
   }
@@ -556,6 +568,10 @@ main {
 
   .page-media {
     width: min(36vw, 140px);
+  }
+
+  .page-3d .page-media {
+    width: min(44vw, 165px);
   }
 
   .page-measurements .page-media {
