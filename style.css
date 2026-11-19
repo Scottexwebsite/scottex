@@ -298,7 +298,8 @@ main {
 }
 
 .pant figcaption {
-  margin-top: 14px;
+  margin-top: 16px;
+  font-size: 18px;
 }
 
 .pant-hero {
@@ -430,12 +431,12 @@ main {
     right: 0;
     z-index: 55;
     height: 104px;
-    padding: 68px 50px 0;
+    padding: 0 24px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 64px;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(32px, 12vw, 64px);
     background: #000;
     font-size: 16px;
     transform: translateY(-100%);
@@ -600,7 +601,12 @@ main {
   }
 
   .pant img {
-    height: 270px;
+    height: 350px;
+  }
+
+  .pant figcaption {
+    margin-top: 16px;
+    font-size: 17px;
   }
 
   .pant-hero {
