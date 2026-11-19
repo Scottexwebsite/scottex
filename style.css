@@ -267,9 +267,13 @@ main {
   gap: 60px;
 }
 
+.pant {
+  margin-top: -48px;
+}
+
 .pant img {
   display: block;
-  height: 340px;
+  height: 520px;
   width: auto;
 }
 
@@ -295,7 +299,7 @@ main {
 .page-pants27 .pant-hero img {
   position: relative;
   z-index: 1;
-  transform: scale(1.72);
+  transform: scale(1.38);
   transform-origin: center center;
 }
 
@@ -536,8 +540,12 @@ main {
     margin-top: 110px;
   }
 
+  .pant {
+    margin-top: -36px;
+  }
+
   .pant img {
-    height: 240px;
+    height: 270px;
   }
 
   .pant-hero {
@@ -552,7 +560,7 @@ main {
   .page-pants27 .pant-hero img {
     position: relative;
     z-index: 1;
-    transform: scale(1.62);
+    transform: scale(1.45);
     transform-origin: center center;
   }
 
